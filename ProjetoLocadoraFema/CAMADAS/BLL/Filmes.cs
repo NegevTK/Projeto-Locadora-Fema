@@ -15,6 +15,18 @@ namespace ProjetoLocadoraFema.CAMADAS.BLL
             return dalFilmes.Select();
         }
 
+        public List<MODEL.Filmes> SelectAtivos()
+        {
+            DAL.Filmes dalFilmes = new DAL.Filmes();
+            return dalFilmes.SelectAtivos();
+        }
+
+        public List<MODEL.Filmes> SelectDesativados()
+        {
+            DAL.Filmes dalFilmes = new DAL.Filmes();
+            return dalFilmes.SelectDesativados();
+        }
+
         public void Insert(MODEL.Filmes filmes)
         {
             DAL.Filmes dalFilmes = new DAL.Filmes();
@@ -33,19 +45,39 @@ namespace ProjetoLocadoraFema.CAMADAS.BLL
             dalFilmes.Delete(idFilmes);
         }
 
-        public List<CAMADAS.MODEL.Filmes> SelectByID(int filmes)
+        public List<CAMADAS.MODEL.Filmes> SelectByIDAtivos(int filmes)
         {
             DAL.Filmes dalFilmes = new DAL.Filmes();
-            return dalFilmes.SelectByID(filmes);
+            return dalFilmes.SelectByIDAtivos(filmes);
             
         }
 
-        public List<CAMADAS.MODEL.Filmes> SelectByNome(String filmes)
+        public List<CAMADAS.MODEL.Filmes> SelectByNomeAtivos(String filmes)
         {
             DAL.Filmes dalFilmes = new DAL.Filmes();
-            return dalFilmes.SelectByNome(filmes);
+            return dalFilmes.SelectByNomeAtivos(filmes);
 
         }
 
+        public List<CAMADAS.MODEL.Filmes> SelectByIDDesativados(int filmes)
+        {
+            DAL.Filmes dalFilmes = new DAL.Filmes();
+            return dalFilmes.SelectByIDDesativados(filmes);
+
+        }
+
+        public List<CAMADAS.MODEL.Filmes> SelectByNomeDesativados(String filmes)
+        {
+            DAL.Filmes dalFilmes = new DAL.Filmes();
+            return dalFilmes.SelectByNomeDesativados(filmes);
+
+        }
+
+        public List<CAMADAS.MODEL.Filmes> SelectByID(int filmes)
+        {
+            DAL.Filmes dalFilmes = new DAL.Filmes();
+            return dalFilmes.SelectByIDAtivos(filmes);
+
+        }
     }
 }

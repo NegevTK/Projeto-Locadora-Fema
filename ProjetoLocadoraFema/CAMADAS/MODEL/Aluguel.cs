@@ -8,17 +8,18 @@ namespace ProjetoLocadoraFema.CAMADAS.MODEL
 {
     public class Aluguel
     {
-        private int ID_Aluguel;
-        private String Data_Compra;
-        private String Data_Prazo;
-        private int ID_Cli;
-        private int ID_Filme;
+        private int IDContrato;
+        private int IDCliente;
+        private int IDFilme;
+        private String DataCompra;
+        private String DataPrazo;
+        private String ValorCompra;
 
-        public int ID_Aluguel1 { get => ID_Aluguel; set => ID_Aluguel = value; }
-        public string Data_Compra1 { get => Data_Compra; set => Data_Compra = value; }
-        public string Data_Prazo1 { get => Data_Prazo; set => Data_Prazo = value; }
-        public int ID_Cli1 { get => ID_Cli; set => ID_Cli = value; }
-        public int ID_Filme1 { get => ID_Filme; set => ID_Filme = value; }
+        public int ID { get => IDContrato; set => IDContrato = value; }
+        public int Cliente { get => IDCliente; set => IDCliente = value; }
+        public int Filme { get => IDFilme; set => IDFilme = value; }
+        public string Compra { get => DataCompra; set => DataCompra = value; }
+        public string Prazo { get => DataPrazo; set => DataPrazo = value; }
+        public string Valor { get => ValorCompra; set => ValorCompra = value; }
     }
 }
- 

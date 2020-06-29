@@ -26,11 +26,11 @@ namespace ProjetoLocadoraFema.CAMADAS.DAL
                 while (dados.Read())
                 {
                     MODEL.Clientes cliente = new MODEL.Clientes();
-                    cliente.ID_Cli1 = Convert.ToInt32(dados["ID_Cli"].ToString());
-                    cliente.Nome_Cli1 = dados["Nome_Cli"].ToString();
-                    cliente.CPF_Cli1 = dados["CPF_Cli"].ToString();
-                    cliente.Ender_Cli1 = dados["Ender_Cli"].ToString();
-                    cliente.Tel_Cli1 = dados["Tel_Cli"].ToString();
+                    cliente.ID = Convert.ToInt32(dados["ID"].ToString());
+                    cliente.Nome = dados["Nome"].ToString();
+                    cliente.CPF = dados["CPF"].ToString();
+                    cliente.Endereco = dados["Endereco"].ToString();
+                    cliente.Telefone = dados["Telefone"].ToString();
                     lstClientes.Add(cliente);
                 }
             }
@@ -46,21 +46,16 @@ namespace ProjetoLocadoraFema.CAMADAS.DAL
         }
 
 
-        public void SelectByNome(){
-        
-        }
-
         public void Insert(MODEL.Clientes clientes)
         {
             SqlConnection conexao = new SqlConnection(strCon);
             string sql = "INSERT INTO Clientes VALUES (@ID_Cli, @Nome_Cli, @CPF_Cli, @Ender_Cli, @Tel_Cli);";
             SqlCommand cmd = new SqlCommand(sql, conexao);
-            cmd.Parameters.AddWithValue("@ID_Cli", clientes.ID_Cli1);
-            cmd.Parameters.AddWithValue("@Nome_Cli", clientes.Nome_Cli1);
-            cmd.Parameters.AddWithValue("@CPF_Cli", clientes.CPF_Cli1);
-            cmd.Parameters.AddWithValue("@Ender_Cli", clientes.Ender_Cli1);
-            cmd.Parameters.AddWithValue("@Tel_Cli", clientes.Tel_Cli1);
-
+            cmd.Parameters.AddWithValue("@ID_Cli", clientes.ID);
+            cmd.Parameters.AddWithValue("@Nome_Cli", clientes.Nome);
+            cmd.Parameters.AddWithValue("@CPF_Cli", clientes.CPF);
+            cmd.Parameters.AddWithValue("@Ender_Cli", clientes.Endereco);
+            cmd.Parameters.AddWithValue("@Tel_Cli", clientes.Telefone);
             try
             {
                 conexao.Open();
@@ -80,14 +75,14 @@ namespace ProjetoLocadoraFema.CAMADAS.DAL
         public void Update(MODEL.Clientes clientes)
         {
             SqlConnection conexao = new SqlConnection(strCon);
-            string sql = "UPDATE Clientes SET ID_Cli=@ID_Cli, Nome_Cli=@Nome_Cli, CPF_Cli=@CPF_Cli, Ender_Cli=@Ender_Cli, Tel_Cli=@Tel_Cli ";
-            sql += "WHERE ID_Cli=@ID_Cli;";
+            string sql = "UPDATE Clientes SET ID=@ID, Nome=@Nome, CPF=@CPF, Endereco=@Endereco, Telefone=@Telefone";
+            sql += " WHERE ID=@ID;";
             SqlCommand cmd = new SqlCommand(sql, conexao);
-            cmd.Parameters.AddWithValue("@ID_Cli", clientes.ID_Cli1);
-            cmd.Parameters.AddWithValue("@Nome_Cli", clientes.Nome_Cli1);
-            cmd.Parameters.AddWithValue("@CPF_Cli", clientes.CPF_Cli1);
-            cmd.Parameters.AddWithValue("@Ender_Cli", clientes.Ender_Cli1);
-            cmd.Parameters.AddWithValue("@Tel_Cli", clientes.Tel_Cli1);
+            cmd.Parameters.AddWithValue("@ID", clientes.ID);
+            cmd.Parameters.AddWithValue("@Nome", clientes.Nome);
+            cmd.Parameters.AddWithValue("@CPF", clientes.CPF);
+            cmd.Parameters.AddWithValue("@Endereco", clientes.Endereco);
+            cmd.Parameters.AddWithValue("@Telefone", clientes.Telefone);
 
             try
             {
@@ -107,9 +102,9 @@ namespace ProjetoLocadoraFema.CAMADAS.DAL
         public void Delete(int ID_Cli)
         {
             SqlConnection conexao = new SqlConnection(strCon);
-            string sql = "DELETE FROM Clientes WHERE ID_Cli=@ID_Cli;";
+            string sql = "DELETE FROM Clientes WHERE ID=@ID;";
             SqlCommand cmd = new SqlCommand(sql, conexao);
-            cmd.Parameters.AddWithValue("@ID_Cli", ID_Cli);
+            cmd.Parameters.AddWithValue("@ID", ID_Cli);
 
             try
             {
@@ -126,5 +121,70 @@ namespace ProjetoLocadoraFema.CAMADAS.DAL
             }
         }
 
+        public List<MODEL.Clientes> SelectByID(int ID)
+        {
+            List<MODEL.Clientes> lstClientes = new List<MODEL.Clientes>();
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "SELECT * FROM Clientes WHERE ID=@ID";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@ID", ID);
+            try
+            {
+                conexao.Open();
+                SqlDataReader dados = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (dados.Read())
+                {
+                    MODEL.Clientes DALClientes = new MODEL.Clientes();
+                    DALClientes.ID = Convert.ToInt32(dados["ID"].ToString());
+                    DALClientes.Nome = dados["Nome"].ToString();
+                    DALClientes.CPF = dados["CPF"].ToString();
+                    DALClientes.Endereco = dados["Endereco"].ToString();
+                    DALClientes.Telefone = dados["Telefone"].ToString();
+                    lstClientes.Add(DALClientes);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Erro na busca do registro");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            return lstClientes;
+        }
+
+        public List<MODEL.Clientes> SelectByNome(String Nome)
+        {
+            List<MODEL.Clientes> lstClientes = new List<MODEL.Clientes>();
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "SELECT * FROM Clientes WHERE (Nome LIKE @Nome);";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@Nome", "%" + Nome + "%");
+            try
+            {
+                conexao.Open();
+                SqlDataReader dados = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (dados.Read())
+                {
+                    MODEL.Clientes DALClientes = new MODEL.Clientes();
+                    DALClientes.ID = Convert.ToInt32(dados["ID"].ToString());
+                    DALClientes.CPF = dados["CPF"].ToString();
+                    DALClientes.Nome = dados["Nome"].ToString();
+                    DALClientes.Endereco = dados["Endereco"].ToString();
+                    DALClientes.Telefone = dados["Telefone"].ToString();
+                    lstClientes.Add(DALClientes);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Erro na busca do registro");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            return lstClientes;
+        }
     }
 }

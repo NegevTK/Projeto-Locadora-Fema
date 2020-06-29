@@ -15,6 +15,7 @@ namespace ProjetoLocadoraFema.CAMADAS.MODEL
         private String Data_Filme;
         private String Classificacao_Filme;
         private Double Preco_Filme;
+        private int Qtd_Filme;
 
         public int ID { get => ID_Filme; set => ID_Filme = value; }
         public string Produtora { get => Produtora_Filme; set => Produtora_Filme = value; }
@@ -23,5 +24,6 @@ namespace ProjetoLocadoraFema.CAMADAS.MODEL
         public string Data { get => Data_Filme; set => Data_Filme = value; }
         public string Faixa { get => Classificacao_Filme; set => Classificacao_Filme = value; }
         public double Valor { get => Preco_Filme; set => Preco_Filme = value; }
+        public int Quantidade { get => Qtd_Filme; set => Qtd_Filme = value; }
     }
 }

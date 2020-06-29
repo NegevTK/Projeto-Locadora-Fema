@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAMADAS\BLL\Aluguel.cs" />
+    <Compile Include="CAMADAS\DAL\Aluguel.cs" />
     <Compile Include="CAMADAS\BLL\Clientes.cs" />
     <Compile Include="CAMADAS\BLL\Filmes.cs" />
     <Compile Include="CAMADAS\DAL\Clientes.cs" />
@@ -55,11 +57,23 @@
     <Compile Include="CAMADAS\MODEL\Aluguel.cs" />
     <Compile Include="CAMADAS\MODEL\Clientes.cs" />
     <Compile Include="CAMADAS\MODEL\Filmes.cs" />
-    <Compile Include="frmPesquisarFilmes.cs">
+    <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPesquisarFilmes.Designer.cs">
-      <DependentUpon>frmPesquisarFilmes.cs</DependentUpon>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratos.Designer.cs">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilmes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilmes.Designer.cs">
+      <DependentUpon>frmFilmes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -67,16 +81,32 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobre.Designer.cs">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmPesquisarFilmes.resx">
-      <DependentUpon>frmPesquisarFilmes.cs</DependentUpon>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContratos.resx">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilmes.resx">
+      <DependentUpon>frmFilmes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSobre.resx">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -97,6 +127,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BLACMIDT_login2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fundoblack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sobre_pag.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,10 +14,10 @@ namespace ProjetoLocadoraFema.CAMADAS.MODEL
         private String Ender_Cli;
         private String Tel_Cli;
 
-        public int ID_Cli1 { get => ID_Cli; set => ID_Cli = value; }
-        public string Nome_Cli1 { get => Nome_Cli; set => Nome_Cli = value; }
-        public string CPF_Cli1 { get => CPF_Cli; set => CPF_Cli = value; }
-        public string Ender_Cli1 { get => Ender_Cli; set => Ender_Cli = value; }
-        public string Tel_Cli1 { get => Tel_Cli; set => Tel_Cli = value; }
+        public int ID { get => ID_Cli; set => ID_Cli = value; }
+        public string Nome { get => Nome_Cli; set => Nome_Cli = value; }
+        public string CPF { get => CPF_Cli; set => CPF_Cli = value; }
+        public string Endereco { get => Ender_Cli; set => Ender_Cli = value; }
+        public string Telefone { get => Tel_Cli; set => Tel_Cli = value; }
     }
 }

@@ -28,12 +28,24 @@ namespace ProjetoLocadoraFema.CAMADAS.BLL
             dalCliente.Update(clientes);
         }
 
-        public void Delete(int clientes)
+        public void Delete(int ID_Cli)
         {
             DAL.Clientes dalClientes = new DAL.Clientes();
-            dalClientes.Delete(clientes);
+            dalClientes.Delete(ID_Cli);
         }
 
+        public List<MODEL.Clientes> SelectByID(int id)
+        {
+            DAL.Clientes dalClientes = new DAL.Clientes();
+            return dalClientes.SelectByID(id);
+        }
+
+        public List<CAMADAS.MODEL.Clientes> SelectByNome(string nome)
+        {
+            DAL.Clientes dalClientes = new DAL.Clientes();
+            return dalClientes.SelectByNome(nome);
+
+        }
 
     }
 }
